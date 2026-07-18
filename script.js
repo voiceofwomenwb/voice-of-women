@@ -25,15 +25,17 @@ alert("Submit button is working");
     return;
   }
 alert("Trying to save to database...");
-  const { error } = await supabase
+const { data, error } = await supabase
+  
     .from("signatures")
     .insert([
-      {
-        name: name,
-        district: district,
-        mobile: mobile || null
-      }
-    ]);
+  {
+    name: name,
+    district: district,
+    mobile: mobile || null
+  }
+])
+.select();
 console.log(error);
 alert(JSON.stringify(error));
  if (error) {
@@ -44,5 +46,4 @@ alert(JSON.stringify(error));
 alert("Saved successfully!");
 window.location.href = "thankyou.html";
 
-  window.location.href = "thankyou.html";
 }
