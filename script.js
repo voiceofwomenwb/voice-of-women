@@ -8,9 +8,10 @@ function showForm() {
   }
 }
 
-function submitPetition() {
-  const name = document.getElementById("name").value;
-  const district = document.getElementById("district").value;
+async function submitPetition() {
+  const name = document.getElementById("name").value.trim();
+  const district = document.getElementById("district").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
   const support = document.getElementById("support").checked;
 
   if (!name || !district) {
@@ -20,6 +21,22 @@ function submitPetition() {
 
   if (!support) {
     alert("Please confirm your support.");
+    return;
+  }
+
+  const { error } = await supabase
+    .from("signatures")
+    .insert([
+      {
+        name: name,
+        district: district,
+        mobile: mobile || null
+      }
+    ]);
+
+  if (error) {
+    console.error(error);
+    alert(error.message);
     return;
   }
 
