@@ -24,9 +24,32 @@
       <div class="counter-number">0</div>
     </div>
 
-    <button class="btn">
+   <button class="btn" onclick="showForm()">
       Sign Petition
     </button>
+<div id="petitionForm" style="display:none; margin-top:20px;">
+
+  <input id="name" type="text" placeholder="Full Name"
+  style="width:100%;padding:12px;margin:8px 0;">
+
+  <input id="district" type="text" placeholder="District"
+  style="width:100%;padding:12px;margin:8px 0;">
+
+  <input id="mobile" type="text" placeholder="Mobile (Optional)"
+  style="width:100%;padding:12px;margin:8px 0;">
+
+  <label>
+    <input id="support" type="checkbox">
+    I support this petition
+  </label>
+
+  <br><br>
+
+  <button class="btn" onclick="submitPetition()">
+    Submit Petition
+  </button>
+
+</div>
 
     <p class="footer-text">
       Together we can raise our voice for eligible women waiting for support.
@@ -34,5 +57,6 @@
 
   </div>
 </div>
+<script src="script.js"></script>
 </body>
 </html>
