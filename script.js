@@ -25,7 +25,17 @@ alert("Submit button is working");
     return;
   }
 alert("Trying to save to database...");
-const { data, error } = await supabase
+const result = await supabase
+  .from("signatures")
+  .insert([
+    {
+      name: name,
+      district: district,
+      mobile: mobile || null
+    }
+  ]);
+
+alert(JSON.stringify(result));
   
     .from("signatures")
     .insert([
