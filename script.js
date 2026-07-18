@@ -34,7 +34,8 @@ alert("Trying to save to database...");
         mobile: mobile || null
       }
     ]);
-
+console.log(error);
+alert(JSON.stringify(error));
  if (error) {
   alert("ERROR: " + JSON.stringify(error));
   return;
