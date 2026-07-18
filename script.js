@@ -9,6 +9,7 @@ function showForm() {
 }
 
 async function submitPetition() {
+alert("Submit button is working");
   const name = document.getElementById("name").value.trim();
   const district = document.getElementById("district").value.trim();
   const mobile = document.getElementById("mobile").value.trim();
