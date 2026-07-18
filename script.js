@@ -9,7 +9,8 @@ function showForm() {
 }
 
 async function submitPetition() {
-alert("Submit button is working");
+  alert("Submit button is working");
+
   const name = document.getElementById("name").value.trim();
   const district = document.getElementById("district").value.trim();
   const mobile = document.getElementById("mobile").value.trim();
@@ -24,36 +25,25 @@ alert("Submit button is working");
     alert("Please confirm your support.");
     return;
   }
-alert("Trying to save to database...");
-const result = await supabase
-  .from("signatures")
-  .insert([
-    {
-      name: name,
-      district: district,
-      mobile: mobile || null
-    }
-  ]);
 
-alert(JSON.stringify(result));
-  
+  alert("Trying to save to database...");
+
+  const result = await supabase
     .from("signatures")
     .insert([
-  {
-    name: name,
-    district: district,
-    mobile: mobile || null
+      {
+        name: name,
+        district: district,
+        mobile: mobile || null
+      }
+    ])
+    .select();
+
+  alert(JSON.stringify(result));
+
+  if (result.error) {
+    return;
   }
-])
-.select();
-console.log(error);
-alert(JSON.stringify(error));
- if (error) {
-  alert("ERROR: " + JSON.stringify(error));
-  return;
-}
 
-alert("Saved successfully!");
-window.location.href = "thankyou.html";
-
+  window.location.href = "thankyou.html";
 }
