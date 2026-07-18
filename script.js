@@ -24,7 +24,7 @@ alert("Submit button is working");
     alert("Please confirm your support.");
     return;
   }
-
+alert("Trying to save to database...");
   const { error } = await supabase
     .from("signatures")
     .insert([
@@ -35,11 +35,13 @@ alert("Submit button is working");
       }
     ]);
 
-  if (error) {
-    console.error(error);
-    alert(error.message);
-    return;
-  }
+ if (error) {
+  alert("ERROR: " + JSON.stringify(error));
+  return;
+}
+
+alert("Saved successfully!");
+window.location.href = "thankyou.html";
 
   window.location.href = "thankyou.html";
 }
