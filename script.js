@@ -23,7 +23,5 @@ function submitPetition() {
     return;
   }
 
-  alert("Thank you for supporting this petition!");
-
-  document.getElementById("petitionForm").reset();
+  window.location.href = "thankyou.html";
 }
