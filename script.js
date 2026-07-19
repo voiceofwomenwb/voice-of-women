@@ -32,27 +32,26 @@ async function submitPetition() {
   alert("Trying to save to database...");
 alert("Supabase exists: " + (typeof supabase));
 alert("Online: " + navigator.onLine);
-  const result = await supabase
-    .from("signatures")
-    .insert([
-      {
-        name: name,
-        district: district,
-        mobile: mobile || null
-      }
-    ])
-    .select();
+  
+const { data, error } = await supabase
+  .from("signatures")
+  .insert([
+    {
+      name: name,
+      district: district,
+      mobile: mobile || null
+    }
+  ])
+  .select();
 
-  alert(JSON.stringify(result));
-console.log(result);
-
-if (result.error) {
-  alert(JSON.stringify(result.error));
+alert("DATA: " + JSON.stringify(data));
+alert("ERROR: " + JSON.stringify(error));
+  if (error) {
+  alert("ERROR: " + JSON.stringify(error));
   return;
 }
-  if (result.error) {
-    return;
-  }
+
+alert("Saved successfully!");
 
   window.location.href = "thankyou.html";
 }
