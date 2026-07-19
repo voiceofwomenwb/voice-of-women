@@ -1,3 +1,6 @@
+window.addEventListener("error", function (e) {
+  alert("JS ERROR: " + e.message);
+});
 function showForm() {
   const form = document.getElementById("petitionForm");
 
