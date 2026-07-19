@@ -40,7 +40,12 @@ async function submitPetition() {
     .select();
 
   alert(JSON.stringify(result));
+console.log(result);
 
+if (result.error) {
+  alert(JSON.stringify(result.error));
+  return;
+}
   if (result.error) {
     return;
   }
