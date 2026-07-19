@@ -30,7 +30,8 @@ async function submitPetition() {
   }
 
   alert("Trying to save to database...");
-
+alert("Supabase exists: " + (typeof supabase));
+alert("Online: " + navigator.onLine);
   const result = await supabase
     .from("signatures")
     .insert([
